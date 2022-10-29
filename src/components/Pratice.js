@@ -14,6 +14,8 @@ function Practie({ onFinalAnswer }) {
     correct: false,
   });
 
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     setQuestions(TestData.wordList.filter((_, index) => index <= 3));
   }, []);
@@ -23,6 +25,8 @@ function Practie({ onFinalAnswer }) {
   }, [currentIndex, questions]);
 
   const setCurrentAnswer = (answer) => {
+    setProgress(((currentIndex + 1) / questions.length) * 100);
+
     const correct = answer === questions[currentIndex].pos;
     setAnswers([...answers, correct]);
     setIsCorrect({
@@ -49,13 +53,12 @@ function Practie({ onFinalAnswer }) {
   const validAnswers = ['verb', 'noun', 'adverb', 'adjective'];
 
   return (
-    <div>
+    <div className='practice'>
       <div className='practice__progress'>
-        <h1>
-          {currentIndex} / {questions.length}
-        </h1>
+        <h1>Progress = {progress}%</h1>
         <h1>{JSON.stringify(answers)}</h1>
       </div>
+
       {currentQuestion && (
         <div className='practice__question'>
           <h2 className='question__body'>{currentQuestion.word}</h2>
