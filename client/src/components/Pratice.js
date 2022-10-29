@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import TestData from '../data/TestData.json';
 import AnswerButton from './AnswerButton';
 import '../styles/practice.scss';
 
@@ -13,7 +12,18 @@ function Practie({ onFinalAnswer }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setQuestions(TestData.wordList.filter((_, index) => index <= 4));
+    const fetchTestData = async () => {
+      const res = await fetch('/questions');
+      const body = await res.json();
+
+      if (res.status !== 200) {
+        throw Error(body.message);
+      }
+
+      setQuestions(body);
+    };
+
+    fetchTestData();
   }, []);
 
   useEffect(() => {
