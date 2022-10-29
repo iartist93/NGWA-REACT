@@ -9,15 +9,11 @@ function Practie({ onFinalAnswer }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [canAnswer, setCanAnswer] = useState(true);
-  const [isCorrect, setIsCorrect] = useState({
-    answers: '',
-    correct: false,
-  });
-
+  const [isCorrect, setIsCorrect] = useState({ answers: '', correct: false });
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setQuestions(TestData.wordList.filter((_, index) => index <= 3));
+    setQuestions(TestData.wordList.filter((_, index) => index <= 4));
   }, []);
 
   useEffect(() => {
@@ -29,10 +25,7 @@ function Practie({ onFinalAnswer }) {
 
     const correct = answer === questions[currentIndex].pos;
     setAnswers([...answers, correct]);
-    setIsCorrect({
-      answer,
-      correct,
-    });
+    setIsCorrect({ answer, correct });
     setCanAnswer(false);
   };
 
@@ -43,10 +36,7 @@ function Practie({ onFinalAnswer }) {
     } else {
       setCurrentIndex(currentIndex + 1);
       setCanAnswer(true);
-      setIsCorrect({
-        answers: '',
-        correct: false,
-      });
+      setIsCorrect({ answers: '', correct: false });
     }
   };
 
