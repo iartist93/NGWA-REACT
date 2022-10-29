@@ -1,0 +1,23 @@
+button {
+  width: 200px;
+  height: 100px;
+  color: white;
+  background: black;
+
+  &:disabled {
+    background: rgb(190, 190, 190);
+    color: gray;
+  }
+
+  &.correct {
+    background: green;
+    color: white;
+    font-weight: 800;
+  }
+
+  &.wrong {
+    background: red;
+    color: white;
+    font-weight: 800;
+  }
+}
