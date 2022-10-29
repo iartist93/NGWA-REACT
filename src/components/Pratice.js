@@ -62,6 +62,7 @@ function Practie({ onFinalAnswer }) {
           <div className='question__answers'>
             {validAnswers.map((answer) => (
               <AnswerButton
+                key={answer}
                 name={answer}
                 disabled={!canAnswer}
                 correct={isCorrect.answer === answer ? isCorrect.correct : null}
