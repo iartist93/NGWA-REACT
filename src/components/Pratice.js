@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import TestData from '../data/TestData.json';
 
-import '../styles/practice.css';
+import '../styles/practice.scss';
 
 function Practie({ onFinalAnswer }) {
   const [questions, setQuestions] = useState([]);
