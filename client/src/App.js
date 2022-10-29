@@ -18,7 +18,7 @@ function App() {
     });
   };
 
-  const onRetry = () => {
+  const onRetry = async () => {
     setShowRankScreen(false);
   };
 

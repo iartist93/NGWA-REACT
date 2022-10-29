@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import AnswerButton from './AnswerButton';
 import '../styles/practice.scss';
+import axios from 'axios';
 
 function Practie({ onFinalAnswer }) {
   const [questions, setQuestions] = useState([]);
@@ -13,14 +14,15 @@ function Practie({ onFinalAnswer }) {
 
   useEffect(() => {
     const fetchTestData = async () => {
-      const res = await fetch('/questions');
-      const body = await res.json();
+      const res = await axios.get('/questions');
+      console.log('res = ', res);
+      const data = await res.data;
 
       if (res.status !== 200) {
-        throw Error(body.message);
+        throw Error('Error in get questions');
       }
 
-      setQuestions(body);
+      setQuestions(data);
     };
 
     fetchTestData();
