@@ -1,10 +1,13 @@
 // import TestData from '../data/TestData.json';
 
 const data = require('./data/TestData.json');
-
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
 
@@ -16,6 +19,6 @@ app.get('/questions', (req, res) => {
 });
 
 app.post('/rank', (req, res) => {
-  console.log(req);
+  console.log(req.body);
   res.end('Hello, World!');
 });

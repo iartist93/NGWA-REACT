@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
 import TestData from '../data/TestData.json';
+import axios from 'axios';
 
 function Rank({ rankData, onRetry }) {
   const [score, setScore] = useState(0);
   const [rank, setRank] = useState(0);
   const [scoresList, setScoreList] = useState([]);
+
+  useEffect(() => {
+    const sendRankData = async () => {
+      await axios.post('/rank', { rankData });
+    };
+    sendRankData();
+  }, []);
 
   useEffect(() => {
     setScore((rankData.correctAnswers / rankData.totalQuestions) * 100);

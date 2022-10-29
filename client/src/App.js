@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles/App.css';
 import Practie from './components/Pratice';
 import Rank from './components/Rank';
