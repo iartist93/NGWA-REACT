@@ -80,7 +80,11 @@ function Practie({ onFinalAnswer }) {
       )}
 
       <div className='pratice__actions'>
-        <button className='next-btn' onClick={onNextClicked}>
+        <button
+          className='next-btn'
+          onClick={onNextClicked}
+          disabled={canAnswer}
+        >
           {currentIndex === questions.length - 1 ? 'FINISH' : 'NEXT'}
         </button>
       </div>
