@@ -28,7 +28,8 @@ function Practie({ onFinalAnswer }) {
 
   const onNextClicked = () => {
     if (currentIndex === questions.length - 1) {
-      onFinalAnswer();
+      const correctAnswers = answers.filter((answer) => answer === true).length;
+      onFinalAnswer(correctAnswers, questions.length);
     } else {
       setCurrentIndex(currentIndex + 1);
       setCanAnswer(true);

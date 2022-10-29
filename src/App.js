@@ -5,9 +5,17 @@ import Rank from './Rank';
 
 function App() {
   const [showRankScreen, setShowRankScreen] = useState(false);
+  const [rankData, setRankData] = useState({
+    correctAnswers: 0,
+    totalQuestions: 0,
+  });
 
-  const onFinalAnswer = () => {
+  const onFinalAnswer = (correctAnswers, totalQuestions) => {
     setShowRankScreen(true);
+    setRankData({
+      correctAnswers,
+      totalQuestions,
+    });
   };
 
   const onRetry = () => {
@@ -17,7 +25,7 @@ function App() {
   return (
     <div className='App'>
       {!showRankScreen && <Practie onFinalAnswer={onFinalAnswer} />}
-      {showRankScreen && <Rank onRetry={onRetry} />}
+      {showRankScreen && <Rank rankData={rankData} onRetry={onRetry} />}
     </div>
   );
 }
