@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import TestData from './data/TestData.json';
+import TestData from '../data/TestData.json';
 
 function Practie({ onFinalAnswer }) {
   const [questions, setQuestions] = useState([]);

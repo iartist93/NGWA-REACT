@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Practie from './Pratice';
+import Practie from './components/Pratice';
 import Rank from './Rank';
 
 function App() {
