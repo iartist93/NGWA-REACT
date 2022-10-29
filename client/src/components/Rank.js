@@ -8,20 +8,15 @@ function Rank({ rankData, onRetry }) {
   const [scoresList, setScoreList] = useState([]);
 
   useEffect(() => {
-    const sendRankData = async () => {
-      await axios.post('/rank', { rankData });
-    };
-    sendRankData();
-  }, []);
-
-  useEffect(() => {
-    setScore((rankData.correctAnswers / rankData.totalQuestions) * 100);
+    const score = (rankData.correctAnswers / rankData.totalQuestions) * 100;
+    setScore(score);
     setScoreList(TestData.scoresList);
 
-    const filteredRanks = scoresList.filter((rank) => rank < score).length;
-    const newRank = (filteredRanks / scoresList.length) * 100;
-    const roundedRank = Math.round(newRank * 100) / 100;
-    setRank(roundedRank);
+    const sendRankData = async () => {
+      const res = await axios.post('/rank', { score });
+      setRank(res.data.rank);
+    };
+    sendRankData();
   }, [rankData, score, scoresList]);
 
   return (

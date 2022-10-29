@@ -13,12 +13,18 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 
-// create a GET route
 app.get('/questions', (req, res) => {
   res.send(data.wordList.filter((_, index) => index <= 4));
 });
 
 app.post('/rank', (req, res) => {
-  console.log(req.body);
-  res.end('Hello, World!');
+  const { score } = req.body;
+  const scoresList = data.scoresList;
+  const filteredRanks = scoresList.filter((rank) => rank < score).length;
+  const newRank = (filteredRanks / scoresList.length) * 100;
+  const roundedRank = Math.round(newRank * 100) / 100;
+
+  console.log(req.body, scoresList.length, filteredRanks, roundedRank);
+
+  res.end(JSON.stringify({ rank: roundedRank }));
 });
