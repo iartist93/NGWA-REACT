@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import TestData from '../data/TestData.json';
 import axios from 'axios';
+import '../styles/rank.scss';
 
 function Rank({ rankData, onRetry }) {
   const [score, setScore] = useState(0);
@@ -20,11 +21,21 @@ function Rank({ rankData, onRetry }) {
   }, [rankData, score, scoresList]);
 
   return (
-    <div>
-      <p>Rank Page</p>
-      <p>Score = {score}%</p>
-      <p>Rank= {rank}</p>
-      <button className='retry' onClick={onRetry}>
+    <div className='rank-page'>
+      <p className='rank-page-title'>Quiz is Completed!</p>
+
+      <div className='results'>
+        <div className='rank-page-result rank-page-score'>
+          <p>Your Score</p>
+          <p>{score}%</p>
+        </div>
+        <div className='rank-page-result rank-page-rank'>
+          <p>Your Rank</p>
+          <p>{rank}%</p>
+        </div>
+      </div>
+
+      <button className='retry-btn' onClick={onRetry}>
         Try Again
       </button>
     </div>
