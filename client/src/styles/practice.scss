@@ -1,0 +1,43 @@
+.practice {
+  width: 100%;
+  flex: 1;
+  background-image: url(../assets/background-img.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-title {
+    font-size: 40px;
+    font-weight: 400;
+  }
+
+  &-word {
+    width: 369px;
+    height: 115px;
+    background-color: #4103db;
+    border-radius: 59px;
+    color: white;
+    font-size: 40px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    margin-top: 60px;
+  }
+
+  &-answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 750px;
+    gap: 30px;
+    margin-top: 100px;
+    height: 100%;
+  }
+}

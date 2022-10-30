@@ -21,9 +21,9 @@ function Rank({ rankData, onRetry }) {
 
   return (
     <div>
-      <h1>Rank Page</h1>
-      <h2>Score = {score}%</h2>
-      <h2>Rank= {rank}</h2>
+      <p>Rank Page</p>
+      <p>Score = {score}%</p>
+      <p>Rank= {rank}</p>
       <button className='retry' onClick={onRetry}>
         Try Again
       </button>

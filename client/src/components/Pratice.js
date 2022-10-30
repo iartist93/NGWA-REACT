@@ -39,6 +39,10 @@ function Practie({ onFinalAnswer }) {
     setAnswers([...answers, correct]);
     setIsCorrect({ answer, correct });
     setCanAnswer(false);
+
+    setTimeout(() => {
+      onNextClicked();
+    }, 2000);
   };
 
   const onNextClicked = () => {
@@ -57,14 +61,17 @@ function Practie({ onFinalAnswer }) {
   return (
     <div className='practice'>
       <div className='practice__progress'>
-        <h1>Progress = {progress}%</h1>
-        <h1>{JSON.stringify(answers)}</h1>
+        <p>Progress = {progress}%</p>
+        {/* <p>{JSON.stringify(answers)}</p> */}
       </div>
 
       {currentQuestion && (
-        <div className='practice__question'>
-          <h2 className='question__body'>{currentQuestion.word}</h2>
-          <div className='question__answers'>
+        <div className='question'>
+          <p className='question-title'>
+            What is the correct category for this word?
+          </p>
+          <p className='question-word'>{currentQuestion.word}</p>
+          <div className='question-answers'>
             {validAnswers.map((answer) => (
               <AnswerButton
                 key={answer}
@@ -78,7 +85,7 @@ function Practie({ onFinalAnswer }) {
         </div>
       )}
 
-      <div className='pratice__actions'>
+      {/* <div className='pratice__actions'>
         <button
           className='next-btn'
           onClick={onNextClicked}
@@ -86,7 +93,7 @@ function Practie({ onFinalAnswer }) {
         >
           {currentIndex === questions.length - 1 ? 'FINISH' : 'NEXT'}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

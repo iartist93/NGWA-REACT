@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
-import './styles/App.css';
+import { useState } from 'react';
+import './styles/App.scss';
 import Practie from './components/Pratice';
 import Rank from './components/Rank';
+
+import logo from './assets/logo.svg';
 
 function App() {
   const [showRankScreen, setShowRankScreen] = useState(false);
@@ -24,6 +26,10 @@ function App() {
 
   return (
     <div className='App'>
+      <div className='app-header'>
+        <img src={logo} alt='logo' className='app-header-logo' />
+        <p className='app-header-title'>Part of Speech</p>
+      </div>
       {!showRankScreen && <Practie onFinalAnswer={onFinalAnswer} />}
       {showRankScreen && <Rank rankData={rankData} onRetry={onRetry} />}
     </div>
