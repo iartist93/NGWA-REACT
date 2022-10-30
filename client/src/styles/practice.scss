@@ -4,6 +4,34 @@
   background-image: url(../assets/background-img.png);
   background-repeat: no-repeat;
   background-position: center bottom;
+
+  &-progress {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .progress-bg {
+      width: 558px;
+      height: 20px;
+      background: #d9d9d9;
+      position: relative;
+      border-radius: 15px;
+    }
+
+    .progress-bar {
+      width: 50%;
+      height: 100%;
+      background: #4103db;
+      border-radius: 15px;
+    }
+
+    .progress-value {
+      font-size: 24px;
+    }
+  }
 }
 
 .question {

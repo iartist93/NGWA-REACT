@@ -60,9 +60,11 @@ function Practie({ onFinalAnswer }) {
 
   return (
     <div className='practice'>
-      <div className='practice__progress'>
-        <p>Progress = {progress}%</p>
-        {/* <p>{JSON.stringify(answers)}</p> */}
+      <div className='practice-progress'>
+        <p className='progress-value'>{progress}%</p>
+        <div className='progress-bg'>
+          <div className='progress-bar' style={{ width: `${progress}%` }}></div>
+        </div>
       </div>
 
       {currentQuestion && (
