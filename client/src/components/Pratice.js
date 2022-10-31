@@ -53,7 +53,7 @@ function Practie({ onFinalAnswer }) {
 
     setTimeout(() => {
       onNextClicked();
-    }, 800);
+    }, 500);
   };
 
   const onNextClicked = () => {
