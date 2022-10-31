@@ -33,7 +33,7 @@ function Practie({ onFinalAnswer }) {
   }, [currentIndex, questions]);
 
   const setCurrentAnswer = (answer) => {
-    setProgress(((currentIndex + 1) / questions.length) * 100);
+    setProgress(Math.round(((currentIndex + 1) / questions.length) * 100));
 
     const correct = answer === questions[currentIndex].pos;
     setAnswers([...answers, correct]);
