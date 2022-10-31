@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 
 app.get('/questions', (req, res) => {
-  res.send(data.wordList.filter((_, index) => index <= 10));
+  res.send(data.wordList.filter((_, index) => index < 10));
 });
 
 app.post('/rank', (req, res) => {
