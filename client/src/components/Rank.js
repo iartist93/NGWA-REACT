@@ -26,8 +26,6 @@ function Rank({ rankData, onRetry }) {
     <div className='rank-page'>
       <p className='rank-page-title'>Quiz is Completed!</p>
 
-      <p>{JSON.stringify(rankData)}</p>
-
       <div className='results'>
         <div className='rank-page-result rank-page-score'>
           <p>Your Score</p>

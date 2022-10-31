@@ -29,13 +29,24 @@ function Practie({ onFinalAnswer }) {
   }, []);
 
   useEffect(() => {
-    setCurrentQuestion(questions[currentIndex]);
+    console.log(currentIndex, questions.length - 1);
+    if (questions.length === 0) return;
+
+    if (currentIndex <= questions.length - 1) {
+      setCanAnswer(true);
+      setIsCorrect({ answers: '', correct: false });
+      setCurrentQuestion(questions[currentIndex]);
+    } else {
+      const correctAnswers = answers.filter((answer) => answer === true).length;
+      onFinalAnswer(correctAnswers, questions.length);
+    }
   }, [currentIndex, questions]);
 
   const setCurrentAnswer = (answer) => {
     setProgress(Math.round(((currentIndex + 1) / questions.length) * 100));
 
     const correct = answer === questions[currentIndex].pos;
+
     setAnswers([...answers, correct]);
     setIsCorrect({ answer, correct });
     setCanAnswer(false);
@@ -46,14 +57,7 @@ function Practie({ onFinalAnswer }) {
   };
 
   const onNextClicked = () => {
-    if (currentIndex === questions.length - 1) {
-      const correctAnswers = answers.filter((answer) => answer === true).length;
-      onFinalAnswer(correctAnswers, questions.length);
-    } else {
-      setCurrentIndex(currentIndex + 1);
-      setCanAnswer(true);
-      setIsCorrect({ answers: '', correct: false });
-    }
+    setCurrentIndex(currentIndex + 1);
   };
 
   const validAnswers = ['verb', 'noun', 'adverb', 'adjective'];
@@ -72,6 +76,7 @@ function Practie({ onFinalAnswer }) {
           <p className='question-title'>
             What is the correct category for this word?
           </p>
+
           <p className='question-word'>{currentQuestion.word}</p>
           <div className='question-answers'>
             {validAnswers.map((answer) => (
