@@ -9,7 +9,9 @@ function Rank({ rankData, onRetry }) {
   const [scoresList, setScoreList] = useState([]);
 
   useEffect(() => {
-    const score = (rankData.correctAnswers / rankData.totalQuestions) * 100;
+    const score = Math.round(
+      (rankData.correctAnswers / rankData.totalQuestions) * 100
+    );
     setScore(score);
     setScoreList(TestData.scoresList);
 
